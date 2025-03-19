@@ -1,0 +1,86 @@
+[2025-03-18 18:16:46] Preview request started
+[2025-03-18 18:16:46] Template ID: 31
+[2025-03-18 18:16:46] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:16:46] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:16:46] File size: 12985 bytes
+[2025-03-18 18:16:46] File extension: docx
+[2025-03-18 18:16:46] Trying to load file with PHPWord
+[2025-03-18 18:16:46] ZipArchive open result: 19
+[2025-03-18 18:16:46] ZipArchive failed to open file. Error code: 19
+[2025-03-18 18:16:46] PHPWord error: ไม่สามารถเปิดไฟล์ .docx ได้ (Error code: 19)
+[2025-03-18 18:16:46] Trying alternative method with LibreOffice
+[2025-03-18 18:16:46] LibreOffice not installed
+[2025-03-18 18:16:46] LibreOffice error: LibreOffice ไม่ได้ติดตั้ง
+[2025-03-18 18:18:49] Preview request started
+[2025-03-18 18:18:49] Template ID: 31
+[2025-03-18 18:18:49] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:18:49] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:18:49] File size: 12985 bytes
+[2025-03-18 18:18:49] File extension: docx
+[2025-03-18 18:18:49] Trying to load file with PHPWord
+[2025-03-18 18:18:49] ZipArchive open result: 19
+[2025-03-18 18:18:49] ZipArchive failed to open file. Error code: 19
+[2025-03-18 18:18:49] PHPWord error: ไม่สามารถเปิดไฟล์ .docx ได้ (Error code: 19)
+[2025-03-18 18:18:49] Trying alternative method with LibreOffice
+[2025-03-18 18:18:49] LibreOffice not installed
+[2025-03-18 18:18:49] LibreOffice error: LibreOffice ไม่ได้ติดตั้ง
+[2025-03-18 18:18:56] Preview request started
+[2025-03-18 18:18:56] Template ID: 31
+[2025-03-18 18:18:56] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:18:56] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:18:56] File size: 12985 bytes
+[2025-03-18 18:18:56] File extension: docx
+[2025-03-18 18:18:56] Trying to load file with PHPWord
+[2025-03-18 18:18:56] ZipArchive open result: 19
+[2025-03-18 18:18:56] ZipArchive failed to open file. Error code: 19
+[2025-03-18 18:18:56] PHPWord error: ไม่สามารถเปิดไฟล์ .docx ได้ (Error code: 19)
+[2025-03-18 18:18:56] Trying alternative method with LibreOffice
+[2025-03-18 18:18:56] LibreOffice not installed
+[2025-03-18 18:18:56] LibreOffice error: LibreOffice ไม่ได้ติดตั้ง
+[2025-03-18 18:19:33] Preview request started
+[2025-03-18 18:19:33] Template ID: 31
+[2025-03-18 18:19:33] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:19:33] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:19:33] File size: 12985 bytes
+[2025-03-18 18:19:33] File extension: docx
+[2025-03-18 18:19:33] Trying to load file with PHPWord
+[2025-03-18 18:19:33] ZipArchive open result: 19
+[2025-03-18 18:19:33] ZipArchive failed to open file. Error code: 19
+[2025-03-18 18:19:33] PHPWord error: ไม่สามารถเปิดไฟล์ .docx ได้ (Error code: 19)
+[2025-03-18 18:19:33] Trying alternative method with LibreOffice
+[2025-03-18 18:19:33] LibreOffice not installed
+[2025-03-18 18:19:33] LibreOffice error: LibreOffice ไม่ได้ติดตั้ง
+[2025-03-18 18:21:12] Preview request started
+[2025-03-18 18:21:12] Template ID: 31
+[2025-03-18 18:21:12] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:21:12] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:21:12] File size: 12985 bytes
+[2025-03-18 18:21:12] File extension: docx
+[2025-03-18 18:21:12] Trying to load file with PHPWord
+[2025-03-18 18:21:12] ZipArchive could not open the file: error code 19
+[2025-03-18 18:21:12] PHPWord error: ไม่สามารถเปิดไฟล์ .docx ได้ (ZipArchive error: 19)
+[2025-03-18 18:21:12] Trying alternative method with direct IOFactory
+[2025-03-18 18:21:12] Direct IOFactory error: The archive failed to load with the following error code: 19
+[2025-03-18 18:24:11] Preview request started
+[2025-03-18 18:24:11] Template ID: 31
+[2025-03-18 18:24:11] Template found: {"template_id":31,"template_name":"\u0e40\u0e2d\u0e01\u0e2a\u0e32\u0e23\u0e01\u0e32\u0e23\u0e17\u0e33\u0e07\u0e32\u0e19","file_path":"file_67d8e002dd73a1.24728325.docx","uploaded_by":26,"created_at":"2025-03-18 02:52:50","folder_id":12,"download_count":0}
+[2025-03-18 18:24:11] File path: ../../uploads/file_67d8e002dd73a1.24728325.docx
+[2025-03-18 18:24:11] File size: 12985 bytes
+[2025-03-18 18:24:11] ZipArchive could not open the file: error code 19
+[2025-03-18 18:24:12] Preview error: ไม่สามารถเปิดไฟล์ .docx ได้ (ZipArchive error: 19)
+[2025-03-18 18:24:21] Preview request started
+[2025-03-18 18:24:21] Template ID: 27
+[2025-03-18 18:24:21] Template found: {"template_id":27,"template_name":"\u0e41\u0e1a\u0e1a\u0e02\u0e2d\u0e2d\u0e19\u0e38\u0e21\u0e31\u0e15\u0e34\u0e40\u0e1a\u0e34\u0e01\u0e04\u0e48\u0e32\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e27\u0e48\u0e32\u0e07","file_path":"file_67d6992cb53171.87212532.docx","uploaded_by":22,"created_at":"2025-03-16 09:26:04","folder_id":11,"download_count":0}
+[2025-03-18 18:24:21] File path: ../../uploads/file_67d6992cb53171.87212532.docx
+[2025-03-18 18:24:21] File size: 37233 bytes
+[2025-03-18 18:24:22] File loaded successfully with PHPWord
+[2025-03-18 18:24:23] HTML content length: 16227
+[2025-03-18 18:24:23] Sending success response
+[2025-03-18 18:24:25] Preview request started
+[2025-03-18 18:24:25] Template ID: 23
+[2025-03-18 18:24:25] Template found: {"template_id":23,"template_name":"\u0e41\u0e1a\u0e1a\u0e1f\u0e2d\u0e23\u0e4c\u0e21 8","file_path":"file_67d40086eb3d45.83212236.docx","uploaded_by":22,"created_at":"2025-03-14 10:10:14","folder_id":11,"download_count":0}
+[2025-03-18 18:24:25] File path: ../../uploads/file_67d40086eb3d45.83212236.docx
+[2025-03-18 18:24:25] File size: 216612 bytes
+[2025-03-18 18:24:27] File loaded successfully with PHPWord
+[2025-03-18 18:24:27] HTML content length: 330786
+[2025-03-18 18:24:27] Sending success response

@@ -1,0 +1,48 @@
+[2025-03-18 18:35:23] Preview request started
+[2025-03-18 18:35:23] File ID: 108
+[2025-03-18 18:35:23] File found: {"file_path":"..\/..\/uploads\/BPA_STP.docx"}
+[2025-03-18 18:35:23] File path: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:35:23] File does not exist: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:35:23] Trying alternative path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:35:23] File does not exist at alternative path either
+[2025-03-18 18:35:23] Preview error: ไม่พบไฟล์ในระบบ (Cannot find archive file)
+[2025-03-18 18:38:54] Preview request started
+[2025-03-18 18:38:54] GET parameters: {"file_id":"108"}
+[2025-03-18 18:38:54] File ID: 108
+[2025-03-18 18:38:54] File found: {"file_path":"..\/..\/uploads\/BPA_STP.docx"}
+[2025-03-18 18:38:54] Trying path: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:54] Trying path: ../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:54] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:54] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:54] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:54] File not found in any of the possible paths
+[2025-03-18 18:38:57] Preview request started
+[2025-03-18 18:38:57] GET parameters: {"file_id":"108"}
+[2025-03-18 18:38:57] File ID: 108
+[2025-03-18 18:38:57] File found: {"file_path":"..\/..\/uploads\/BPA_STP.docx"}
+[2025-03-18 18:38:57] Trying path: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:57] Trying path: ../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:57] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:57] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:57] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:38:57] File not found in any of the possible paths
+[2025-03-18 18:39:08] Preview request started
+[2025-03-18 18:39:08] GET parameters: {"file_id":"108"}
+[2025-03-18 18:39:08] File ID: 108
+[2025-03-18 18:39:08] File found: {"file_path":"..\/..\/uploads\/BPA_STP.docx"}
+[2025-03-18 18:39:08] Trying path: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: ../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] File not found in any of the possible paths
+[2025-03-18 18:39:08] Preview request started
+[2025-03-18 18:39:08] GET parameters: {"file_id":"108"}
+[2025-03-18 18:39:08] File ID: 108
+[2025-03-18 18:39:08] File found: {"file_path":"..\/..\/uploads\/BPA_STP.docx"}
+[2025-03-18 18:39:08] Trying path: ../../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: ../uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] Trying path: /var/www/html/uploads/../../uploads/BPA_STP.docx
+[2025-03-18 18:39:08] File not found in any of the possible paths
