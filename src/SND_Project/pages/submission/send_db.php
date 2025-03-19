@@ -121,8 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $stmt_recipient->bind_param("ii", $doc_id, $dept_id);
                             $stmt_recipient->execute();
 
-                            // ดึงข้อมูลผู้ใช้ทั้งหมดในแผนก
-                            $stmt_dept_users = $conn->prepare("SELECT user_id, email, firstname, lastname FROM users WHERE department_id = ?");
+                            // แก้ไขการดึงข้อมูลผู้ใช้ทั้งหมดในแผนก โดยใช้ JOIN กับ user_department
+                            $stmt_dept_users = $conn->prepare("SELECT u.user_id, u.email, u.firstname, u.lastname 
+                                                             FROM user_department ud
+                                                             JOIN users u ON ud.user_id = u.user_id
+                                                             WHERE ud.department_id = ?");
                             $stmt_dept_users->bind_param("i", $dept_id);
                             $stmt_dept_users->execute();
                             $dept_users = $stmt_dept_users->get_result();

@@ -83,8 +83,14 @@ function fetch_inbox($conn, $user_id) {
          LEFT JOIN users u ON ds.sender_id = u.user_id
          WHERE (dr.receiver_id = ? OR dr.department_id IN 
                (SELECT department_id FROM user_department WHERE user_id = ?))
-           AND ds.status != 'cancel'
-           AND dr.status != 'removed'
+           AND ds.status NOT IN ('cancel')
+           AND dr.status NOT IN ('removed')
+           AND EXISTS (
+               SELECT 1 
+               FROM document_recipient dr2 
+               WHERE dr2.submission_id = ds.submission_id 
+               AND dr2.status NOT IN ('removed')
+           )
          ORDER BY ds.updated_at DESC
         )
         UNION
@@ -94,7 +100,15 @@ function fetch_inbox($conn, $user_id) {
          FROM document_submission ds
          JOIN document_recipient dr ON ds.submission_id = dr.submission_id
          LEFT JOIN users u ON ds.sender_id = u.user_id
-         WHERE ds.sender_id = ? AND dr.status = 'revision'
+         WHERE ds.sender_id = ? 
+         AND dr.status = 'revision'
+         AND ds.status NOT IN ('cancel')
+         AND EXISTS (
+               SELECT 1 
+               FROM document_recipient dr2 
+               WHERE dr2.submission_id = ds.submission_id 
+               AND dr2.status NOT IN ('removed')
+           )
          ORDER BY ds.updated_at DESC
         )";
 
