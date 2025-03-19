@@ -48,7 +48,7 @@ $sql4 = "SELECT
             CASE status
                 WHEN 'pending' THEN 'รอดำเนินการ'
                 WHEN 'read' THEN 'อ่านแล้ว'
-                WHEN 'removed' THEN 'ลบแล้ว'
+                WHEN 'removed' THEN 'ยกเลิกแล้ว'
                 WHEN 'revision' THEN 'ส่งกลับแก้ไข'
                 WHEN 'completed' THEN 'เสร็จสิ้น'
                 ELSE status
@@ -93,7 +93,6 @@ while ($row = mysqli_fetch_assoc($result4)) {
             <a class="navbar-brand" href="admin.php"><img src="../../assets/img/logo-snd.png" alt="" width="200px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <?php include '../../components/notification_component.php'; ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo isset($data) ? $data['prefix'] . " " . $data['firstname'] . " " . $data['lastname'] : "ไม่พบข้อมูล"; ?>
@@ -186,15 +185,18 @@ while ($row = mysqli_fetch_assoc($result4)) {
         const downloadData = <?php echo json_encode($download_data); ?>;
         const dailyData = <?php echo json_encode($daily_downloads); ?>;
 
+        // เรียงลำดับข้อมูลและเลือกเฉพาะ 5 อันดับแรกที่มีการดาวน์โหลดมากที่สุด
+        const topDownloads = [...downloadData].sort((a, b) => b.download_count - a.download_count).slice(0, 5);
+
         // สร้างกราฟแรก (ดาวน์โหลดตามไฟล์)
         const ctx1 = document.getElementById('downloadByFileChart').getContext('2d');
         const downloadByFileChart = new Chart(ctx1, {
             type: 'bar',
             data: {
-                labels: downloadData.map(item => item.template_name),
+                labels: topDownloads.map(item => item.template_name),
                 datasets: [{
                     label: 'จำนวนการดาวน์โหลด',
-                    data: downloadData.map(item => item.download_count),
+                    data: topDownloads.map(item => item.download_count),
                     backgroundColor: 'rgba(242, 107, 15)',
                     borderColor: 'rgba(242, 107, 15)',
                     borderWidth: 1
@@ -204,6 +206,15 @@ while ($row = mysqli_fetch_assoc($result4)) {
                 scales: {
                     y: {
                         beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: '5 อันดับไฟล์ที่มีการดาวน์โหลดมากที่สุด',
+                        font: {
+                            size: 16
+                        }
                     }
                 }
             }
@@ -269,7 +280,6 @@ while ($row = mysqli_fetch_assoc($result4)) {
             }
         });
 
-        // เพิ่มข้อมูลสำหรับกราฟสถานะเอกสาร
         const statusData = <?php echo json_encode($status_data); ?>;
 
         // สร้างกราฟวงกลมแสดงสถานะเอกสาร
@@ -283,14 +293,16 @@ while ($row = mysqli_fetch_assoc($result4)) {
                     backgroundColor: [
                         'rgba(242, 107, 15, 0.8)', // สีส้ม - รอดำเนินการ
                         'rgba(54, 162, 235, 0.8)', // สีฟ้า - อ่านแล้ว
-                        'rgba(255, 99, 132, 0.8)', // สีแดง - ลบแล้ว
                         'rgba(255, 206, 86, 0.8)', // สีเหลือง - ส่งกลับแก้ไข
+                        'rgba(75, 192, 92, 0.8)',  // สีเขียว - เสร็จสิ้น
+                        'rgba(255, 99, 132, 0.8)'  // สีแดง - ยกเลิกแล้ว
                     ],
                     borderColor: [
                         'rgba(242, 107, 15, 1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)',
                         'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 92, 1)',
+                        'rgba(255, 99, 132, 1)'
                     ],
                     borderWidth: 1
                 }]

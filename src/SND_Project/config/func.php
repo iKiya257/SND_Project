@@ -279,5 +279,5 @@ function fetch_notifications($conn, $user_id) {
     $stmt->execute();
     return $stmt->get_result();
 }
-?>
+
 

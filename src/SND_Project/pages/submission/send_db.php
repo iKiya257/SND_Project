@@ -95,14 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             // สร้างข้อความแจ้งเตือน
                             $notification_message = "คุณได้รับเอกสารใหม่: {$name} จาก {$sender['firstname']} {$sender['lastname']}";
                             
-                            // ใช้ฟังก์ชัน createNotification
-                            if (createNotification($conn, $recipient_user_id, $notification_message, $submission_id)) {
-                                // บันทึกสำเร็จ
-                                error_log("Notification created successfully for user: $recipient_user_id, submission: $submission_id");
-                            } else {
-                                // บันทึกไม่สำเร็จ
-                                error_log("Failed to create notification for user: $recipient_user_id, submission: $submission_id");
-                            }
+                            // ส่งการแจ้งเตือนในระบบ
+                            createNotification($conn, $recipient_user_id, $notification_message, $submission_id);
 
                             // ส่งอีเมลแจ้งเตือน
                             $email_subject = "แจ้งเตือน: มีเอกสารใหม่";
@@ -122,9 +116,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (!empty($_POST['dept_ids'])) {
                     foreach ($_POST['dept_ids'] as $dept_id) {
                         if (!empty($dept_id)) {
+                            // บันทึกผู้รับแผนก
                             $stmt_recipient = $conn->prepare("INSERT INTO document_recipient (submission_id, receiver_id, department_id) VALUES (?, NULL, ?)");
                             $stmt_recipient->bind_param("ii", $doc_id, $dept_id);
                             $stmt_recipient->execute();
+
+                            // ดึงข้อมูลผู้ใช้ทั้งหมดในแผนก
+                            $stmt_dept_users = $conn->prepare("SELECT user_id, email, firstname, lastname FROM users WHERE department_id = ?");
+                            $stmt_dept_users->bind_param("i", $dept_id);
+                            $stmt_dept_users->execute();
+                            $dept_users = $stmt_dept_users->get_result();
+
+                            while ($user = $dept_users->fetch_assoc()) {
+                                // สร้างข้อความแจ้งเตือน
+                                $notification_message = "คุณได้รับเอกสารใหม่: {$name} จาก {$sender['firstname']} {$sender['lastname']} (ส่งถึงทั้งแผนก)";
+                                
+                                // ส่งการแจ้งเตือนในระบบ
+                                createNotification($conn, $user['user_id'], $notification_message, $submission_id);
+
+                                // ส่งอีเมลแจ้งเตือน
+                                $email_subject = "แจ้งเตือน: มีเอกสารใหม่ถึงแผนก";
+                                $email_body = "เรียน คุณ{$user['firstname']} {$user['lastname']}\n\n";
+                                $email_body .= "มีเอกสารใหม่ส่งถึงแผนกของท่าน:\n";
+                                $email_body .= "รหัสเอกสาร: {$ref}\n";
+                                $email_body .= "ชื่อเอกสาร: {$name}\n";
+                                $email_body .= "ผู้ส่ง: {$sender['firstname']} {$sender['lastname']}\n";
+                                $email_body .= "กรุณาเข้าสู่ระบบเพื่อตรวจสอบเอกสาร\n";
+
+                                sendEmail($user['email'], $email_subject, $email_body);
+                            }
                         }
                     }
                 }

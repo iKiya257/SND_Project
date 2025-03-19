@@ -16,10 +16,10 @@ services:
   db:
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: snddb
-      MYSQL_USER: snduser
-      MYSQL_PASSWORD: sndpassword
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: MYSQL_DATABASE
+      MYSQL_USER: MYSQL_USER  # ต้องตรงกับ config/db.php
+      MYSQL_PASSWORD: MYSQL_PASSWORD  # ต้องตรงกับ config/db.php
     ports:
       - "9906:3306"
   phpmyadmin:

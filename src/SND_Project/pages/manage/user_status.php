@@ -1,4 +1,5 @@
 <?php
+ob_start(); // Start output buffering
 session_start();
 include '../../config/func.php';
 
@@ -27,4 +28,5 @@ if (isset($_GET['u_id']) && isset($_GET['action'])) {
 } else {
     echo "Invalid request.";
 }
-?>
+
+ob_end_flush(); // End and flush the buffer

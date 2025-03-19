@@ -86,7 +86,6 @@ $data = fetch_user($conn, $user_id);
             <a class="navbar-brand" href="admin.php"><img src="../../assets/img/logo-snd.png" alt="" width="200px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <?php include '../../components/notification_component.php'; ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="<?php echo $profile_image; ?>" class="rounded-circle" width="30" height="30">

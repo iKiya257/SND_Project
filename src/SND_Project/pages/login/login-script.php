@@ -1,4 +1,5 @@
 <?php
+ob_start(); // Start output buffering
 session_start();
 include '../../config/db.php';
 $_SESSION['ok'] = 0;
@@ -51,4 +52,5 @@ function check_login($conn, $email, $password) {
     $stmt->close();
 }
 
-?>
+ob_end_flush(); // End and flush the buffer
+

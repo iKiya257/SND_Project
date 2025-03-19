@@ -66,10 +66,8 @@ $data = fetch_user($conn, $user_id);
             <a class="navbar-brand" href="admin.php"><img src="../../assets/img/logo-snd.png" alt="" width="200px"></a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
-                    <?php include '../../components/notification_component.php'; ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?php echo $profile_image; ?>" class="rounded-circle" width="30" height="30">
                             <?php echo isset($data) ? $data['firstname'] . " " . $data['lastname'] : "ไม่พบข้อมูล"; ?>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -127,6 +125,25 @@ $data = fetch_user($conn, $user_id);
     </section>
 
     <section id="container">
+        <?php
+        // แสดงข้อความแจ้งเตือนความสำเร็จ
+        if (isset($_SESSION['success'])) {
+            echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ' . $_SESSION['success'] . '
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>';
+            unset($_SESSION['success']);
+        }
+        
+        // แสดงข้อความแจ้งเตือนข้อผิดพลาด
+        if (isset($_SESSION['error'])) {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    ' . $_SESSION['error'] . '
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>';
+            unset($_SESSION['error']);
+        }
+        ?>
         <div class="content-header">
             <h1>ข้อมูลวัตถุประสงค์</h1>
             <div>
@@ -145,9 +162,9 @@ $data = fetch_user($conn, $user_id);
                             </div>
                             <form action="purpose_add.php" method="POST">
                                 <div class="modal-body">
-                                    <div class="addfolder">
-                                        <label>ชื่อวัตถุประสงค์</label>
-                                        <input type="text" class="form-control" name="folder_name" placeholder="ระบุชื่อวัตถุประสงค์">
+                                    <div class="mb-3">
+                                        <label for="purpose_name">ชื่อวัตถุประสงค์</label>
+                                        <input type="text" class="form-control" id="purpose_name" name="purpose_name" placeholder="ระบุชื่อวัตถุประสงค์" required>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

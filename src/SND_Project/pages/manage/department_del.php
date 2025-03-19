@@ -38,4 +38,4 @@ if (isset($_GET['id'])) {
     header("Location: department.php");
     exit();
 }
-?>
+
