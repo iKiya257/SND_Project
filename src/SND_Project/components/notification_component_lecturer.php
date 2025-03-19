@@ -23,7 +23,7 @@
                 <li>
                     <a class="dropdown-item notification-item" 
                        href="javascript:void(0);" 
-                       onclick="window.location.href='http://localhost:8080/pages/inbox/viewinbox_lect.php?submission_id=<?php echo $notification['submission_id']; ?>'"
+                       onclick="window.location.href='http://pmkt.grandkaze.com/pages/inbox/viewinbox_lect.php?submission_id=<?php echo $notification['submission_id']; ?>'"
                        data-notification-id="<?php echo $notification['id']; ?>">
                         <div class="notification-content">
                             <small><?php echo date('d/m/Y H:i', strtotime($notification['created_at'])); ?></small>
