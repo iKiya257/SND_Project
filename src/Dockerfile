@@ -24,22 +24,23 @@ COPY . /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 RUN echo "memory_limit=256M" > /usr/local/etc/php/conf.d/memory-limit.ini
-RUN find /var/www/html -name "index.php" > /var/www/html/index_locations.txt
 
-# เพิ่มการกำหนดค่า DirectoryIndex
-RUN echo 'DirectoryIndex index.php index.html' > /etc/apache2/conf-available/directoryindex.conf
-RUN a2enconf directoryindex
+# โครงสร้างโฟลเดอร์สำหรับ debug
+RUN find /var/www/html -type f -name "index.php" > /var/www/html/debug_paths.txt
+RUN ls -la /var/www/html >> /var/www/html/debug_paths.txt
 
-# กำหนด DocumentRoot เป็น /var/www/html/src
-ENV APACHE_DOCUMENT_ROOT /src/SND_Project/index.php
-
-# แก้ไข configuration ที่มีอยู่แล้วให้ใช้ APACHE_DOCUMENT_ROOT
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
-RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}/!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
-
-# เปิดใช้งาน AllowOverride และ Options
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
-RUN sed -i '/<Directory \/var\/www\/>/,/<\/Directory>/ s/Options Indexes FollowSymLinks/Options Indexes FollowSymLinks MultiViews/' /etc/apache2/apache2.conf
+# กำหนด DocumentRoot ไปที่โฟลเดอร์ที่มี index.php อยู่
+RUN echo '<VirtualHost *:80>\n\
+    ServerAdmin webmaster@localhost\n\
+    DocumentRoot /var/www/html/SND_Project\n\
+    <Directory /var/www/html/SND_Project>\n\
+        Options Indexes FollowSymLinks\n\
+        AllowOverride All\n\
+        Require all granted\n\
+    </Directory>\n\
+    ErrorLog ${APACHE_LOG_DIR}/error.log\n\
+    CustomLog ${APACHE_LOG_DIR}/access.log combined\n\
+</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
 
 EXPOSE 80
 CMD ["apache2-foreground"]
