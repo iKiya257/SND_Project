@@ -33,7 +33,7 @@ RUN find /var/www/html -name "index.php" > /var/www/html/index_locations.txt
 # เพิ่มการกำหนดค่า DirectoryIndex และ Document Root
 RUN echo 'DirectoryIndex index.php index.html' > /etc/apache2/conf-available/directoryindex.conf
 RUN a2enconf directoryindex
-
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/SND_Project
 # สร้างไฟล์สำหรับเปลี่ยน Document Root ตาม environment variable
 RUN echo '<VirtualHost *:80>\n\
     ServerAdmin webmaster@localhost\n\
