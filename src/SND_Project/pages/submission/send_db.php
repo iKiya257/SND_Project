@@ -10,7 +10,6 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: ../login/login.php");
     exit();
 }
-
 // ฟังก์ชันส่งอีเมล
 function sendEmail($toEmail, $subject, $body) {
     $mail = new PHPMailer(true);
@@ -126,61 +125,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $stmt_recipient = $conn->prepare("INSERT INTO document_recipient (submission_id, receiver_id, department_id) VALUES (?, NULL, ?)");
                             $stmt_recipient->bind_param("ii", $doc_id, $dept_id);
                             $stmt_recipient->execute();
-
-                            // ดึงชื่อแผนก
-                            $stmt_dept_name = $conn->prepare("SELECT department_name FROM departments WHERE department_id = ?");
-                            $stmt_dept_name->bind_param("i", $dept_id);
-                            $stmt_dept_name->execute();
-                            $dept_result = $stmt_dept_name->get_result();
-                            $dept_name = "";
-                            if ($dept_row = $dept_result->fetch_assoc()) {
-                                $dept_name = $dept_row['department_name'];
-                            }
-
-                            // ดึงข้อมูลผู้ใช้ทั้งหมดในแผนก
-                            $stmt_dept_users = $conn->prepare("SELECT u.user_id, u.email, u.firstname, u.lastname 
-                                                              FROM users u 
-                                                              JOIN user_department ud ON u.user_id = ud.user_id
-                                                              WHERE ud.department_id = ?");
-                            $stmt_dept_users->bind_param("i", $dept_id);
-                            $stmt_dept_users->execute();
-                            $result_dept_users = $stmt_dept_users->get_result();
-                            
-                            while ($dept_user = $result_dept_users->fetch_assoc()) {
-                                // สร้างข้อความแจ้งเตือน
-                                $notification_message = "คุณได้รับเอกสารใหม่: {$name} จาก {$sender['firstname']} {$sender['lastname']}";
-                                if (!empty($dept_name)) {
-                                    $notification_message .= " (ส่งถึงแผนก {$dept_name})";
-                                }
-                                
-                                // ใช้ฟังก์ชัน createNotification
-                                if (createNotification($conn, $dept_user['user_id'], $notification_message, $submission_id)) {
-                                    // บันทึกสำเร็จ
-                                    error_log("Notification created successfully for user: {$dept_user['user_id']} in department: $dept_id, submission: $submission_id");
-                                } else {
-                                    // บันทึกไม่สำเร็จ
-                                    error_log("Failed to create notification for user: {$dept_user['user_id']} in department: $dept_id, submission: $submission_id");
-                                }
-
-                                // ส่งอีเมลแจ้งเตือน
-                                $email_subject = "แจ้งเตือน: มีเอกสารใหม่";
-                                if (!empty($dept_name)) {
-                                    $email_subject .= " สำหรับแผนก {$dept_name}";
-                                }
-                                
-                                $email_body = "เรียน คุณ{$dept_user['firstname']} {$dept_user['lastname']}\n\n";
-                                $email_body .= "คุณได้รับเอกสารใหม่จากระบบ";
-                                if (!empty($dept_name)) {
-                                    $email_body .= " สำหรับแผนก {$dept_name}";
-                                }
-                                $email_body .= ":\n";
-                                $email_body .= "รหัสเอกสาร: {$ref}\n";
-                                $email_body .= "ชื่อเอกสาร: {$name}\n";
-                                $email_body .= "ผู้ส่ง: {$sender['firstname']} {$sender['lastname']}\n";
-                                $email_body .= "กรุณาเข้าสู่ระบบเพื่อตรวจสอบเอกสาร\n";
-
-                                sendEmail($dept_user['email'], $email_subject, $email_body);
-                            }
                         }
                     }
                 }
@@ -225,13 +169,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] == 'staff') {
-        header("Location: send.php");
-    } else {
-        header("Location: send_lect.php");
-    }
-    ob_end_flush();
+if (isset($_SESSION['role']) && $_SESSION['role'] == 'staff') {
+    header("Location: send.php");
+    exit();
+} else {
+    header("Location: send_lect.php");
     exit();
 }
 ?>
