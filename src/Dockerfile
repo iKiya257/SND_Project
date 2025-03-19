@@ -31,7 +31,7 @@ RUN echo 'DirectoryIndex index.php index.html' > /etc/apache2/conf-available/dir
 RUN a2enconf directoryindex
 
 # กำหนด DocumentRoot เป็น /var/www/html/src
-ENV APACHE_DOCUMENT_ROOT /var/www/html/src
+ENV APACHE_DOCUMENT_ROOT /src/SND_Project/index.php
 
 # แก้ไข configuration ที่มีอยู่แล้วให้ใช้ APACHE_DOCUMENT_ROOT
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
