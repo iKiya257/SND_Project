@@ -33,8 +33,8 @@ RUN ls -la /var/www/html/* 2>/dev/null >> /var/www/html/debug_paths.txt || true
 # ตั้งค่า DocumentRoot เป็นโฟลเดอร์ที่เรารู้แน่นอนว่ามีอยู่
 RUN echo '<VirtualHost *:80>\n\
     ServerAdmin webmaster@localhost\n\
-    DocumentRoot /var/www/html/SND_Project\n\
-    <Directory /var/www/html/SND_Project>\n\
+    DocumentRoot /var/www/html/src/SND_Project\n\
+    <Directory /var/www/html/src/SND_Project>\n\
         Options Indexes FollowSymLinks\n\
         AllowOverride All\n\
         Require all granted\n\
