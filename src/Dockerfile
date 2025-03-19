@@ -28,4 +28,4 @@ RUN chown -R www-data:www-data /var/www/html
 RUN chmod -R 755 /var/www/html
 
 RUN echo "memory_limit=256M" > /usr/local/etc/php/conf.d/memory-limit.ini
-
+RUN find /var/www/html -name "index.php" > /var/www/html/index_locations.txt
